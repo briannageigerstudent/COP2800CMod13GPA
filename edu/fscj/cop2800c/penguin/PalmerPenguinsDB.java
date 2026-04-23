@@ -34,6 +34,14 @@ public class PalmerPenguinsDB
     
                 // Create table
                 // *** add your code here
+                String createTable = "CREATE TABLE Penguin " +
+                       "(SAMPLENUM smallint PRIMARY KEY NOT NULL," +
+                       "CULMENLEN float NOT NULL," +
+                       "CULMENDEPTH float NOT NULL," +
+                       "BODYMASS smallint NOT NULL," +
+                       "SEX char(1) NOT NULL," +
+                       "SPECIES varchar(20) NOT NULL," +
+                       "FLIPPERLEN float NOT NULL)";
                 
                 
                 stmt.executeUpdate(createTable);
@@ -64,6 +72,17 @@ public class PalmerPenguinsDB
                 // Query and print results using try-with-resources
                 try (ResultSet rs = stmt.executeQuery("SELECT * FROM Penguin")) {
                     // *** add your code here
+                    while (rs.next()) {
+                        System.out.println(
+                            rs.getInt("SAMPLENUM") + "," +
+                            rs.getDouble("CULMENLEN") + "," +
+                            rs.getDouble("CULMENDEPTH") + "," +
+                            rs.getInt("BODYMASS") + "," +
+                            rs.getString("SEX") + "," +
+                            rs.getString("SPECIES") + "," +
+                            rs.getDouble("FLIPPERLEN")
+                        );
+                     }
 
                 }
     
